@@ -3,19 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Title</title>
-    <!-- Link your external CSS file here -->
-    <link rel="stylesheet" href="style.css">
+    <title>Full Screen Window</title>
+    <style>
+        /* Force the body to take up the full screen width and height */
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-   <form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
-</form>
-<iframe>
-    
-</iframe>
-    <!-- Link your external JavaScript file here -->
-    <script src="script.js"></script>
+
+    <h1>Welcome to My Full Screen Page</h1>
+    <!-- A button is required to trigger full screen mode -->
+    <button id="fullscreen-btn">Go Full Screen</button>
+
+    <script>
+        const btn = document.getElementById('fullscreen-btn');
+
+        btn.addEventListener('click', () => {
+            // Target the entire page document to expand 
+            const element = document.documentElement;
+
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.webkitRequestFullscreen) { /* Safari support */
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { /* IE11 support */
+                element.msRequestFullscreen();
+            }
+        });
+    </script>
 </body>
 </html>
